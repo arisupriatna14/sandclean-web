@@ -68,7 +68,7 @@ export default function Hero() {
           >
             <a
               id="download"
-              href="https://github.com/arisupriatna14/sandclean/releases/download/v1.0.0/SandClean-1.0.dmg"
+              href="https://github.com/arisupriatna14/sandclean-app/releases/download/v.1.0.0/SandClean-1.0.dmg"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold text-sm transition-colors duration-200 shadow-lg shadow-[#3B82F6]/20"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
