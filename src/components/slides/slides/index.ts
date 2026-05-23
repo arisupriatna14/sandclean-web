@@ -7,6 +7,7 @@ import OpportunitySlide from "./OpportunitySlide";
 import TechStackSlide from "./TechStackSlide";
 import ArchitectureSlide from "./ArchitectureSlide";
 import FeaturesSlide from "./FeaturesSlide";
+import NewFeaturesSlide from "./NewFeaturesSlide";
 import PublishingSlide from "./PublishingSlide";
 import NextPlanSlide from "./NextPlanSlide";
 import RoadmapSlide from "./RoadmapSlide";
@@ -22,6 +23,7 @@ export const slides = [
   TechStackSlide,
   ArchitectureSlide,
   FeaturesSlide,
+  NewFeaturesSlide,
   PublishingSlide,
   NextPlanSlide,
   RoadmapSlide,

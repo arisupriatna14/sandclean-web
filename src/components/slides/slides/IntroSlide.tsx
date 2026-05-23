@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, Smartphone, Code2 } from "lucide-react";
+import { Briefcase, Smartphone, Code2 } from "lucide-react";
 import { useLang } from "../LangContext";
 import { t } from "../translations";
 
@@ -12,8 +12,7 @@ export default function IntroSlide() {
     { icon: Smartphone, text: t(lang, "Native iOS & macOS development", "Pengembangan iOS & macOS native"), accent: "#3B82F6" },
     { icon: Code2, text: "Swift · SwiftUI · UIKit", accent: "#8B5CF6" },
     { icon: Briefcase, text: "Stockbit - Bibit", accent: "#F97316" },
-    { icon: Calendar, text: t(lang, "2021 – present (4+ years)", "2021 – sekarang (4+ tahun)"), accent: "#10B981" },
-    { icon: Briefcase, text: t(lang, "Core iOS Team @Stockbit", "Tim Core iOS @Stockbit"), accent: "#F97316" },
+{ icon: Briefcase, text: t(lang, "Core iOS Team @Stockbit", "Tim Core iOS @Stockbit"), accent: "#F97316" },
   ];
 
   return (
@@ -66,6 +65,41 @@ export default function IntroSlide() {
               <span className="text-[#F97316] font-semibold text-sm">Stockbit</span>
               <span className="text-[#1E3A5F]">·</span>
               <span className="text-[#64748B] text-sm font-mono">2021 – {t(lang, "present", "sekarang")}</span>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.35 }}
+              className="mt-3 flex items-center gap-4 justify-center sm:justify-start"
+            >
+              <a
+                href="https://instagram.com/arionman14"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-[#94A3B8] hover:text-[#E1306C] transition-colors duration-200"
+              >
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                </svg>
+                <span className="text-sm font-mono">@arionman14</span>
+              </a>
+              <span className="text-[#1E3A5F]">·</span>
+              <a
+                href="https://linkedin.com/in/arisupriatna"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-[#94A3B8] hover:text-[#0A66C2] transition-colors duration-200"
+              >
+                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+                <span className="text-sm">Ari Supriatna</span>
+              </a>
             </motion.div>
 
             <motion.div
