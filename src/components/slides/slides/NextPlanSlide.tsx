@@ -1,134 +1,120 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShoppingBag, CheckCircle2, ArrowRight } from "lucide-react";
+import { ShieldCheck, ArrowRight } from "lucide-react";
 import { useLang } from "../LangContext";
 import { t } from "../translations";
 
 export default function NextPlanSlide() {
   const lang = useLang();
 
-  const goals = [
+  const phases = [
     {
-      icon: ShoppingBag,
-      title: t(lang, "App Store Distribution", "Distribusi App Store"),
-      desc: t(
-        lang,
-        "Reach a wider audience via Mac App Store — paid upfront, no DMG, no manual install.",
-        "Jangkau audiens lebih luas via Mac App Store — bayar di awal, tanpa DMG, tanpa instalasi manual."
-      ),
-      accent: "#3B82F6", bg: "#3B82F610",
+      n: "1",
+      label: t(lang, "Sandboxing Foundation", "Fondasi Sandboxing"),
+      detail: t(lang, "App Sandbox + FDA entitlement, App Group container, guard ProcessService calls", "App Sandbox + entitlement FDA, container App Group, guard ProcessService"),
+      accent: "#10B981",
     },
-  ];
-
-  const steps = [
     {
-      phase: "Sandbox",
-      items: [
-        t(lang, "Enable App Sandbox entitlement", "Aktifkan entitlement App Sandbox"),
-        t(lang, "Replace Process API (tmutil/diskutil) with sandboxed alternatives", "Ganti Process API (tmutil/diskutil) dengan alternatif berbasis sandbox"),
-        t(lang, "Request com.apple.security.files.user-selected.read-write entitlement", "Minta entitlement com.apple.security.files.user-selected.read-write"),
-      ],
+      n: "2",
+      label: t(lang, "AI Analysis: CLI → API", "AI Analysis: CLI → API"),
+      detail: t(lang, "ClaudeAPIService via URLSession, API key stored in Keychain, Settings UI update", "ClaudeAPIService via URLSession, API key di Keychain, update Settings UI"),
+      accent: "#8B5CF6",
+    },
+    {
+      n: "3",
+      label: t(lang, "Metadata & Assets", "Metadata & Aset"),
+      detail: t(lang, "Privacy strings, screenshots 1280×800 & 1440×900, App Store Connect record", "Privacy strings, screenshot 1280×800 & 1440×900, record App Store Connect"),
       accent: "#F97316",
     },
     {
-      phase: "App Store Connect",
-      items: [
-        t(lang, "Prepare screenshots (1280×800 & 2560×1600)", "Siapkan screenshot (1280×800 & 2560×1600)"),
-        t(lang, "Write app description, keywords, privacy policy URL", "Tulis deskripsi app, kata kunci, URL kebijakan privasi"),
-      ],
-      accent: "#3B82F6",
+      n: "4",
+      label: t(lang, "FDA Justification & Testing", "Justifikasi FDA & Pengujian"),
+      detail: t(lang, "Submit FDA letter to Apple, full sandbox checklist, TestFlight internal", "Kirim surat FDA ke Apple, checklist sandbox lengkap, TestFlight internal"),
+      accent: "#F59E0B",
     },
     {
-      phase: t(lang, "Review & Release", "Review & Rilis"),
-      items: [
-        t(lang, "Submit for App Review (allow 1–3 days)", "Kirim untuk App Review (tunggu 1–3 hari)"),
-        t(lang, "Respond to any sandbox permission rejections", "Tanggapi penolakan izin sandbox"),
-        t(lang, "Phased release — 7-day rollout to catch regressions", "Rilis bertahap — rollout 7 hari untuk menangkap regresi"),
-      ],
-      accent: "#10B981",
+      n: "5",
+      label: t(lang, "Submit & Dual Distribution", "Submit & Distribusi Ganda"),
+      detail: t(lang, "Upload build, App Review submission. Maintain DMG (power users) + App Store (general)", "Upload build, submit App Review. Pertahankan DMG (power user) + App Store (umum)"),
+      accent: "#EC4899",
     },
   ];
 
   return (
-    <div className="flex flex-col justify-center h-full px-8 sm:px-16 max-w-5xl mx-auto w-full">
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }} className="mb-7">
+    <div className="flex flex-col justify-center h-full px-8 sm:px-16 max-w-4xl mx-auto w-full">
+      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }} className="mb-8">
         <p className="text-[#3B82F6] text-xs font-semibold uppercase tracking-widest mb-3">
-          09 — {t(lang, "Next Plan", "Rencana Selanjutnya")}
+          10 — {t(lang, "Next Plan", "Rencana Selanjutnya")}
         </p>
         <h2 className="text-4xl sm:text-5xl font-bold text-[#F1F5F9] tracking-tight">
           {t(lang, "From DMG to App Store.", "Dari DMG ke App Store.")}
         </h2>
+        <div className="mt-3 flex items-center gap-3 flex-wrap">
+          <div className="flex items-center gap-1.5">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#10B981]" strokeWidth={2} />
+            <span className="text-[#94A3B8] text-sm">
+              {t(lang, "FDA strategy — same as CleanMyMac X & Gemini 2", "Strategi FDA — sama seperti CleanMyMac X & Gemini 2")}
+            </span>
+          </div>
+          <span className="text-[#1E3A5F]">·</span>
+          <span className="text-[#64748B] text-sm font-mono">
+            {t(lang, "24 / 31 features retained", "24 / 31 fitur tetap berjalan")}
+          </span>
+          <span className="text-[#1E3A5F]">·</span>
+          <span className="text-[#64748B] text-sm font-mono">~4–5 {t(lang, "weeks", "minggu")}</span>
+        </div>
       </motion.div>
 
-      <motion.div
-        initial="hidden"
-        animate="show"
-        variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}
-        className="grid grid-cols-1 gap-3 mb-6"
-      >
-        {goals.map((g) => {
-          const Icon = g.icon;
-          return (
-            <motion.div
-              key={g.title}
-              variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0, transition: { duration: 0.4 } } }}
-              className="flex gap-4 p-4 rounded-2xl border border-[#1E3A5F] bg-[#0F1F3D]"
-            >
-              <div className="flex-shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-xl" style={{ background: g.bg }}>
-                <Icon className="w-5 h-5" style={{ color: g.accent }} strokeWidth={1.8} />
-              </div>
-              <div>
-                <h3 className="text-[#F1F5F9] font-semibold text-sm mb-1">{g.title}</h3>
-                <p className="text-[#94A3B8] text-xs leading-relaxed">{g.desc}</p>
-              </div>
-            </motion.div>
-          );
-        })}
-      </motion.div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        {steps.map((s, i) => (
+      <div className="flex flex-col">
+        {phases.map((phase, i) => (
           <motion.div
-            key={s.phase}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25 + i * 0.09 }}
-            className="p-4 rounded-2xl border border-[#1E3A5F] bg-[#0F1F3D]"
+            key={phase.n}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.25 + i * 0.1, duration: 0.4 }}
+            className="flex gap-4"
           >
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center text-white flex-shrink-0" style={{ background: s.accent }}>
-                {i + 1}
-              </span>
-              <p className="text-xs font-semibold" style={{ color: s.accent }}>{s.phase}</p>
+            {/* left column: circle + connector */}
+            <div className="flex flex-col items-center w-9 flex-shrink-0">
+              <div
+                className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold text-white z-10 flex-shrink-0"
+                style={{ background: phase.accent, boxShadow: `0 0 12px ${phase.accent}40` }}
+              >
+                {phase.n}
+              </div>
+              {i < phases.length - 1 && (
+                <div className="w-px flex-1 my-1 opacity-30" style={{ background: phase.accent }} />
+              )}
             </div>
-            <div className="space-y-2">
-              {s.items.map((item) => (
-                <div key={item} className="flex items-start gap-2">
-                  <CheckCircle2 className="w-3 h-3 flex-shrink-0 mt-0.5 text-[#1E3A5F]" strokeWidth={2} />
-                  <span className="text-[#94A3B8] text-xs leading-relaxed">{item}</span>
-                </div>
-              ))}
+
+            {/* card */}
+            <div
+              className={`flex-1 flex items-center gap-4 px-5 py-3.5 rounded-2xl border bg-[#0F1F3D] ${i < phases.length - 1 ? "mb-3" : ""}`}
+              style={{ borderColor: phase.accent + "30" }}
+            >
+              <div className="flex-1">
+                <p className="text-[#F1F5F9] font-semibold text-sm">{phase.label}</p>
+                <p className="text-[#64748B] text-xs mt-0.5 leading-relaxed">{phase.detail}</p>
+              </div>
+              <ArrowRight className="w-4 h-4 flex-shrink-0 opacity-20" style={{ color: phase.accent }} strokeWidth={2} />
             </div>
           </motion.div>
         ))}
       </div>
 
-      <motion.div
+      <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.7 }}
-        className="mt-5 flex items-center gap-2 text-[#64748B] text-xs"
+        transition={{ delay: 0.9 }}
+        className="mt-6 text-[#64748B] text-xs pl-[52px] pr-4"
       >
-        <ArrowRight className="w-3.5 h-3.5 flex-shrink-0" />
-        <span>
-          {t(
-            lang,
-            "Biggest challenge: re-architecting scanners to work inside the App Sandbox.",
-            "Tantangan terbesar: re-arsitektur scanner agar bisa berjalan di dalam App Sandbox."
-          )}
-        </span>
-      </motion.div>
+        {t(
+          lang,
+          "Biggest challenge: FDA entitlement approval from Apple + re-architecting ProcessService calls.",
+          "Tantangan terbesar: persetujuan entitlement FDA dari Apple + re-arsitektur ProcessService calls."
+        )}
+      </motion.p>
     </div>
   );
 }

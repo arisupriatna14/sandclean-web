@@ -11,8 +11,7 @@ export default function IdeationSlide() {
   const principles = [
     { text: t(lang, "Native SwiftUI — no Electron, no web wrapper", "Native SwiftUI — tanpa Electron, tanpa web wrapper"), accent: "#3B82F6" },
     { text: t(lang, "Free & open-source — no subscriptions, ever", "Gratis & open-source — tidak ada langganan, selamanya"), accent: "#3B82F6" },
-    { text: t(lang, "Trash-first deletion — nothing is permanently lost", "Hapus ke Trash dulu — tidak ada yang hilang permanen"), accent: "#8B5CF6" },
-    { text: t(lang, "Full Disk Access, requested once — no hidden tricks", "Full Disk Access, diminta sekali — tidak ada trik tersembunyi"), accent: "#8B5CF6" },
+{ text: t(lang, "Full Disk Access, requested once — no hidden tricks", "Full Disk Access, diminta sekali — tidak ada trik tersembunyi"), accent: "#8B5CF6" },
     { text: t(lang, "Developer-aware — knows Xcode, Homebrew, npm, Cargo", "Paham developer — tahu Xcode, Homebrew, npm, Cargo"), accent: "#F97316" },
     { text: t(lang, "macOS 13+ only — use modern APIs, no legacy cruft", "macOS 13+ saja — gunakan API modern, tanpa kode lama"), accent: "#F97316" },
   ];

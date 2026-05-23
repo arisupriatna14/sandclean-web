@@ -20,7 +20,6 @@ export default function TechStackSlide() {
 
   const decisions = [
     { label: t(lang, "Non-sandboxed", "Non-sandbox"), reason: t(lang, "Full Disk Access needs it; distributed via DMG, not App Store", "Full Disk Access memerlukannya; didistribusikan via DMG, bukan App Store") },
-    { label: t(lang, "Trash-first deletion", "Hapus ke Trash dulu"), reason: t(lang, "FileManager.trashItem() — never permanent, always recoverable", "FileManager.trashItem() — tidak pernah permanen, selalu bisa dipulihkan") },
     { label: t(lang, "macOS 13+ only", "macOS 13+ saja"), reason: t(lang, "Use @Observable, modern SwiftUI, no legacy compromises", "Gunakan @Observable, SwiftUI modern, tanpa kompromi legacy") },
     { label: t(lang, "Actor-based scanners", "Scanner berbasis Actor"), reason: t(lang, "Thread safety without locks; each scanner runs concurrently", "Thread safety tanpa lock; setiap scanner berjalan bersamaan") },
   ];

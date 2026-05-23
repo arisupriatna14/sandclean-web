@@ -10,7 +10,6 @@ export default function ClosingSlide() {
 
   const takeaways = [
     t(lang, "Build native — SwiftUI + Swift Concurrency is genuinely great", "Bangun native — SwiftUI + Swift Concurrency benar-benar luar biasa"),
-    t(lang, "Trash-first: never delete permanently from a utility app", "Trash-first: jangan pernah hapus permanen dari utility app"),
     t(lang, "Automate everything — Makefile for archive → dmg → notarize", "Otomatiskan segalanya — Makefile untuk archive → dmg → notarize"),
     t(lang, "Open-source is a feature, not just a license", "Open-source adalah fitur, bukan sekadar lisensi"),
   ];
