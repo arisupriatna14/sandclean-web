@@ -7,6 +7,21 @@
     <language>en</language>
 
     <item>
+      <title>Version 1.1.0</title>
+      <pubDate>Fri, 06 Jun 2026 10:00:00 +0700</pubDate>
+      <sparkle:version>2</sparkle:version>
+      <sparkle:shortVersionString>1.1.0</sparkle:shortVersionString>
+      <sparkle:releaseNotesLink>
+        https://sandclean.vercel.app/release-notes/1.1.0.html
+      </sparkle:releaseNotesLink>
+      <enclosure
+        url="https://github.com/arisupriatna14/sandclean-app/releases/download/v1.1.0/SandClean-1.1.0.dmg"
+        sparkle:edSignature="7dl8eYCpvtVwIvs/+mXRGeFZ79NThRyEbxJdbg3beXG/+Cm+ZqRYFrE7uv9bWnSQ9aPU3MVQ3cwN8HrYhNhBCg=="
+        length="6453698"
+        type="application/octet-stream"/>
+    </item>
+
+    <item>
       <title>Version 1.0</title>
       <pubDate>Fri, 06 Jun 2026 10:00:00 +0700</pubDate>
       <sparkle:version>1</sparkle:version>

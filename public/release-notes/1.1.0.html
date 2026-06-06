@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SandClean 1.1.0 Release Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      background: #0A1628;
+      color: #F1F5F9;
+      padding: 20px 18px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #1E3A5F;
+    }
+
+    .version-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #0F1F3D;
+      border: 1px solid #1E3A5F;
+      border-radius: 8px;
+      padding: 4px 10px;
+    }
+
+    .version-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #3B82F6;
+      box-shadow: 0 0 6px #3B82F680;
+    }
+
+    .version-text {
+      font-size: 12px;
+      font-weight: 600;
+      color: #3B82F6;
+      letter-spacing: 0.02em;
+    }
+
+    .date {
+      font-size: 11px;
+      color: #64748B;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #64748B;
+      margin-bottom: 8px;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 8px 10px;
+      background: #0F1F3D;
+      border: 1px solid #1E3A5F;
+      border-radius: 8px;
+      color: #94A3B8;
+      font-size: 12.5px;
+      line-height: 1.5;
+    }
+
+    li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #3B82F6;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .footer {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid #1E3A5F;
+      font-size: 11px;
+      color: #64748B;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="version-badge">
+      <div class="version-dot"></div>
+      <span class="version-text">Version 1.1.0</span>
+    </div>
+    <span class="date">June 6, 2026</span>
+  </div>
+
+  <p class="section-label">What's New</p>
+  <ul>
+    <li>SandClean now checks for updates automatically and notifies you when a new version is available</li>
+    <li>New AI Analysis feature — get smart recommendations on whether files are safe to delete, powered by Apple Foundation Models or Claude CLI</li>
+    <li>New Unused Files scanner and redesigned Disk Visualizer as Space Lens for a clearer picture of what's taking space</li>
+    <li>Duplicate Photos scanner now shows image previews in a grouped card layout for easier review</li>
+    <li>You can now update individual Homebrew packages directly from the Deep Clean view, with per-formula notifications</li>
+    <li>Added Select All per group in Xcode Cleaner, full device names in iOS Device Support, and ⌘R shortcut across all scanner views</li>
+    <li>Menu Bar widget redesigned with a storage ring gauge and category breakdown</li>
+    <li>Fixed an issue where cleaning notifications would sometimes appear twice; improved iCloud scan to run in the background without causing pauses</li>
+    <li>App is now available in English, Indonesian, and Spanish</li>
+  </ul>
+
+  <div class="footer">© 2026 Ari Supriatna · SandClean</div>
+
+</body>
+</html>
