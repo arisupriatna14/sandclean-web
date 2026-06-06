@@ -18,7 +18,7 @@ async function logDownloadClick() {
   const analytics = await getAnalyticsInstance();
   if (!analytics) return;
   logEvent(analytics, "download_dmg_click", {
-    app_version: "1.0.0",
+    app_version: "1.1.0",
     platform: "macOS",
   });
 }
@@ -79,7 +79,7 @@ export default function Hero() {
           >
             <a
               id="download"
-              href="https://github.com/arisupriatna14/sandclean-app/releases/download/v.1.0.0/SandClean-1.0.dmg"
+              href="https://github.com/arisupriatna14/sandclean-app/releases/download/v1.1.0/SandClean-1.1.0.dmg"
               onClick={logDownloadClick}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold text-sm transition-colors duration-200 shadow-lg shadow-[#3B82F6]/20"
             >
