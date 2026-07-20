@@ -1,54 +1,182 @@
 @import "tailwindcss";
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ── SandClean "Blueprint" design tokens ───────────────────────────────────
+   A light, paper-like surface with the app's blue as the brand anchor and
+   warm ember/violet/emerald as category accents. Ink is derived from the
+   old navy chrome (#0A1628) so the identity carries over.                  */
+@theme {
+  --color-bg: #f6f8fc; /* paper — screen background */
+  --color-surface: #ffffff; /* cards, sheets */
+  --color-surface-hi: #e7effb; /* soft blue tint — chips, banners */
 
-  /* SandClean design tokens */
-  --color-base: #0A1628;
-  --color-surface: #0F1F3D;
-  --color-surface-hover: #162850;
-  --color-border: #1E3A5F;
-  --color-accent-blue: #3B82F6;
-  --color-accent-blue-hover: #2563EB;
-  --color-accent-orange: #F97316;
-  --color-accent-purple: #8B5CF6;
-  --color-text-primary: #F1F5F9;
-  --color-text-muted: #94A3B8;
-  --color-text-subtle: #64748B;
+  --color-brand: #3b82f6; /* SandClean blue */
+  --color-brand-subtle: #e7effb;
+  --color-brand-deep: #1d4ed8;
+
+  --color-accent: #2563eb; /* CTAs, links, emphasis */
+  --color-accent-hi: #3b82f6; /* hover */
+
+  --color-ink: #0f1e33; /* primary text */
+  --color-ink-dim: #5a6b85; /* secondary text */
+
+  --color-ember: #ea580c; /* orange — warm accent */
+  --color-violet: #7c3aed;
+  --color-emerald: #059669;
+
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-display: var(--font-display), var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --radius-card: 20px;
 }
 
 :root {
-  --background: #0A1628;
-  --foreground: #F1F5F9;
+  --stroke: #dde5f0; /* hairline borders/separators */
+  --stroke-strong: #c6d3e6;
+  --card-shadow: 0 4px 12px rgba(15, 30, 51, 0.06);
+  --card-shadow-hi: 0 12px 32px rgba(15, 30, 51, 0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-bg);
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Tabular figures for byte counts and stats */
+.tnum {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* Uppercase micro-label above section headings */
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 800;
+  font-size: 0.72rem;
+  color: var(--color-accent);
+}
+
+/* Card — white surface + soft ink shadow, 20px radius */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-card);
+  box-shadow: var(--card-shadow);
+}
+
+/* Glassmorphic floating control — nav pill, chips */
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+/* Brand radial glow (echoes the app icon's bloom) */
+.brand-glow {
+  background: radial-gradient(
+    closest-side,
+    rgba(59, 130, 246, 0.32),
+    rgba(59, 130, 246, 0.09) 60%,
+    transparent 100%
+  );
+}
+
+/* Signature hero/CTA gradient band — blue → paper */
+.brand-band {
+  background: linear-gradient(135deg, var(--color-brand-subtle) 0%, #f2f7ff 55%, #ffffff 100%);
+}
+
+/* Blueprint grid — faint technical grid for hero/CTA backdrops */
+.blueprint-grid {
+  background-image:
+    linear-gradient(to right, rgba(59, 130, 246, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59, 130, 246, 0.09) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 100%);
+}
+
+/* Hairline section separator */
+.hairline {
+  border-color: var(--stroke);
+}
+
+/* Hide scrollbar on horizontal scroll strips */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.animate-floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+/* Slow pulse for the eyebrow "live" dot */
+@keyframes softpulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+}
+.animate-softpulse {
+  animation: softpulse 2.4s ease-in-out infinite;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0A1628;
+  background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1E3A5F;
-  border-radius: 3px;
+  background: var(--stroke-strong);
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3B82F6;
+  background: var(--color-brand);
 }
 
-/* Selection */
 ::selection {
-  background: #3B82F620;
-  color: #F1F5F9;
+  background: rgba(59, 130, 246, 0.2);
+  color: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-floaty,
+  .animate-softpulse {
+    animation: none;
+  }
 }
