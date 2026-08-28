@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { slides } from "./slides";
 import SlideProgress from "./SlideProgress";
 import { LangContext, type Lang } from "./LangContext";
 
@@ -24,7 +23,7 @@ const slideVariants = {
   }),
 };
 
-export default function SlideShow() {
+export default function SlideShow({ slides }: { slides: React.ComponentType[] }) {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -42,7 +41,7 @@ export default function SlideShow() {
       setDirection(index > current ? 1 : -1);
       setCurrent(index);
     },
-    [current]
+    [current, slides.length]
   );
 
   const next = useCallback(() => goTo(current + 1), [current, goTo]);
@@ -57,7 +56,7 @@ export default function SlideShow() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [next, prev, goTo]);
+  }, [next, prev, goTo, slides.length]);
 
   const onTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;

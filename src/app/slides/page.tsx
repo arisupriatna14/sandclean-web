@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import SlideShow from "@/components/slides/SlideShow";
+import { slides } from "@/components/slides/slides";
 
 export const metadata = {
   title: "Building SandClean — The Story",
@@ -9,7 +10,7 @@ export const metadata = {
 export default function SlidesPage() {
   return (
     <Suspense>
-      <SlideShow />
+      <SlideShow slides={slides} />
     </Suspense>
   );
 }
