@@ -2,44 +2,47 @@
 
 import { motion } from "framer-motion";
 import { Boxes, Lock, KeyRound, Ship, Rocket } from "lucide-react";
+import { useLang } from "../LangContext";
+import { t } from "../translations";
 
 export default function AgendaSlide() {
+  const lang = useLang();
 
   const sections = [
     {
       icon: Boxes,
       accent: "#3B82F6",
       range: "03",
-      title: "One repo, two apps",
-      detail: "How the same code becomes two different products without copying anything.",
+      title: t(lang, "One repo, two apps", "Satu repo, dua app"),
+      detail: t(lang, "How the same code becomes two different products without copying anything.", "Bagaimana kode yang sama jadi dua produk berbeda tanpa menyalin apa pun."),
     },
     {
       icon: Lock,
       accent: "#8B5CF6",
       range: "04–06",
-      title: "What sandboxed actually means",
-      detail: "The sandbox, Hardened Runtime and TCC are three different things. Plus the permissions file that decides what an app may touch.",
+      title: t(lang, "What sandboxed actually means", "Apa arti sandboxed sebenarnya"),
+      detail: t(lang, "The sandbox, Hardened Runtime and TCC are three different things. Plus the permissions file that decides what an app may touch.", "Sandbox, Hardened Runtime, dan TCC adalah tiga hal berbeda. Plus file izin yang menentukan apa yang boleh disentuh app."),
     },
     {
       icon: KeyRound,
       accent: "#EF4444",
       range: "07–09",
-      title: "The part that broke the plan",
-      detail: "Why Apple will not hand out Full Disk Access, what is used instead, and the eight features it costs.",
+      title: t(lang, "The part that broke the plan", "Bagian yang membatalkan rencana"),
+      detail: t(lang, "Why Apple will not hand out Full Disk Access, what is used instead, and the eight features it costs.", "Kenapa Apple tidak memberikan Full Disk Access, apa gantinya, dan delapan fitur yang hilang karenanya."),
     },
     {
       icon: Ship,
       accent: "#F97316",
       range: "10–12",
-      title: "Getting it out the door",
-      detail: "Signing and notarizing a DMG, uploading to the App Store, and the two side by side.",
+      title: t(lang, "Getting it out the door", "Membawanya sampai ke user"),
+      detail: t(lang, "Signing and notarizing a DMG, uploading to the App Store, and the two side by side.", "Menandatangani dan menotarisasi DMG, mengunggah ke App Store, dan keduanya berdampingan."),
     },
     {
       icon: Rocket,
       accent: "#10B981",
       range: "13–14",
-      title: "Releasing, and what I'd do differently",
-      detail: "Shipping updates without the App Store, and the tips I wish I had before my first upload.",
+      title: t(lang, "Releasing, and what I'd do differently", "Merilis, dan apa yang akan saya ubah"),
+      detail: t(lang, "Shipping updates without the App Store, and the tips I wish I had before my first upload.", "Mengirim update tanpa App Store, dan tips yang saya harap sudah tahu sebelum unggahan pertama."),
     },
   ];
 
@@ -95,7 +98,7 @@ export default function AgendaSlide() {
         transition={{ delay: 0.7 }}
         className="mt-5 text-[#64748B] text-xs leading-relaxed"
       >
-        {"Technical terms stay in English throughout — sandbox, entitlement, notarization. Everything around them is explained as plainly as I can manage."}
+        {t(lang, "Technical terms stay in English throughout — sandbox, entitlement, notarization. Everything around them is explained as plainly as I can manage.", "Istilah teknis tetap bahasa Inggris sepanjang deck — sandbox, entitlement, notarization. Selebihnya dijelaskan sesederhana yang saya bisa.")}
       </motion.p>
     </div>
   );

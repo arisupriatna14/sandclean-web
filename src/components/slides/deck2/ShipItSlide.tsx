@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { KeyRound, Rss, GitCommitVertical } from "lucide-react";
 import CodeBlock from "../CodeBlock";
+import { useLang } from "../LangContext";
+import { t } from "../translations";
 
 const APPCAST = `<item>
   <title>Version 1.1.0</title>
@@ -19,16 +21,17 @@ const APPCAST = `<item>
 </item>`;
 
 export default function ShipItSlide() {
+  const lang = useLang();
 
   const chain = [
-    "bump project.yml",
+    t(lang, "bump project.yml", "bump project.yml"),
     "git log v1.1.0..HEAD",
     "make release",
     "sign_update",
-    "update appcast.xml",
-    "write release notes",
+    t(lang, "update appcast.xml", "update appcast.xml"),
+    t(lang, "write release notes", "tulis release notes"),
     "gh release create",
-    "push both repos",
+    t(lang, "push both repos", "push dua repo"),
   ];
 
   return (
@@ -41,7 +44,7 @@ export default function ShipItSlide() {
           {"Your own update server."}
         </h2>
         <p className="mt-3 text-[#94A3B8] text-sm">
-          {"Outside the App Store, nobody delivers updates for you. The whole system is one XML file on a web server that the app quietly checks now and then."}
+          {t(lang, "Outside the App Store, nobody delivers updates for you. The whole system is one XML file on a web server that the app quietly checks now and then.", "Di luar App Store, tidak ada yang mengantarkan update untukmu. Seluruh sistemnya cuma satu file XML di web server yang diam-diam dicek app-nya sesekali.")}
         </p>
       </motion.div>
 
@@ -60,11 +63,11 @@ export default function ShipItSlide() {
             <div className="flex items-center gap-2 mb-1.5">
               <KeyRound className="w-3.5 h-3.5 text-[#10B981]" strokeWidth={2} />
               <p className="text-[#F1F5F9] text-xs font-semibold">
-                {"Every update is signed"}
+                {t(lang, "Every update is signed", "Setiap update ditandatangani")}
               </p>
             </div>
             <p className="text-[#64748B] text-xs leading-relaxed">
-              {"The app is built already knowing one specific signature, and every update has to carry a matching one or it is refused. So even if someone took over the web server and swapped the file, the app still would not install it."}
+              {t(lang, "The app is built already knowing one specific signature, and every update has to carry a matching one or it is refused. So even if someone took over the web server and swapped the file, the app still would not install it.", "App-nya dibangun sudah mengenali satu tanda tangan tertentu, dan setiap update harus membawa tanda tangan yang cocok atau akan ditolak. Jadi walau ada yang mengambil alih web server dan menukar file-nya, app-nya tetap tidak akan memasangnya.")}
             </p>
           </motion.div>
 
@@ -77,12 +80,12 @@ export default function ShipItSlide() {
             <div className="flex items-center gap-2 mb-1.5">
               <Rss className="w-3.5 h-3.5 text-[#3B82F6]" strokeWidth={2} />
               <p className="text-[#F1F5F9] text-xs font-semibold">
-                {"None of this exists in the App Store version"}
+                {t(lang, "None of this exists in the App Store version", "Semua ini tidak ada di versi App Store")}
               </p>
             </div>
             <p className="text-[#64748B] text-xs leading-relaxed">
               <code className="text-[#F97316] font-mono">#if !APPSTORE import Sparkle</code> —{" "}
-              {"Sparkle is left out of that version entirely and the Updates tab disappears from Settings. App Store apps are updated by the App Store, and are not allowed to do it themselves."}
+              {t(lang, "Sparkle is left out of that version entirely and the Updates tab disappears from Settings. App Store apps are updated by the App Store, and are not allowed to do it themselves.", "Sparkle sama sekali tidak diikutkan di versi itu dan tab Updates hilang dari Settings. App di App Store di-update oleh App Store, dan tidak boleh melakukannya sendiri.")}
             </p>
           </motion.div>
         </div>
@@ -97,7 +100,7 @@ export default function ShipItSlide() {
         <div className="flex items-center gap-2 mb-2.5">
           <GitCommitVertical className="w-3.5 h-3.5 text-[#8B5CF6]" strokeWidth={2} />
           <p className="text-[#F1F5F9] text-xs font-semibold">
-            {"One command, two repos"}
+            {t(lang, "One command, two repos", "Satu perintah, dua repo")}
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1.5">
@@ -111,7 +114,7 @@ export default function ShipItSlide() {
           ))}
         </div>
         <p className="mt-2.5 text-[#64748B] text-xs leading-relaxed">
-          {"One repo holds the app, the other holds the website and that update file. Pushing the second one publishes the website, and from that moment every copy already installed finds the new version on its next check. The whole release is a single command."}
+          {t(lang, "One repo holds the app, the other holds the website and that update file. Pushing the second one publishes the website, and from that moment every copy already installed finds the new version on its next check. The whole release is a single command.", "Satu repo menyimpan app-nya, satunya lagi menyimpan website dan file update tadi. Push yang kedua mempublikasikan website-nya, dan sejak saat itu setiap salinan yang sudah terpasang menemukan versi barunya pada pengecekan berikutnya. Seluruh rilisnya cuma satu perintah.")}
         </p>
       </motion.div>
     </div>

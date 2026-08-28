@@ -2,23 +2,26 @@
 
 import { motion } from "framer-motion";
 import { HardDrive, Store } from "lucide-react";
+import { useLang } from "../LangContext";
+import { t } from "../translations";
 
 export default function ComparisonSlide() {
+  const lang = useLang();
 
   const rows: [string, string, string][] = [
-    ["Where you get it", "Downloaded from GitHub", "Mac App Store"],
-    ["Sandbox", "Off", "On, and enforced"],
-    ["Hardened Runtime", "Required", "Apple handles it"],
-    ["Signed with", "Developer ID", "Apple Distribution"],
-    ["Notarization", "You send it in", "Apple does it"],
-    ["What it can read", "The whole disk", "Only folders you pick"],
-    ["Things it can clean", "24", "16"],
-    ["Stubborn files", "Can ask for your password", "Trash only"],
-    ["Widget + Finder menu", "Included", "Not included"],
-    ["Updates", "Updates itself", "Through the App Store"],
-    ["Time to ship a fix", "Minutes", "Days, if review agrees"],
-    ["Apple's cut", "0%", "15–30%"],
-    ["Who it is for", "Developers", "Everyone else"],
+    [t(lang, "Where you get it", "Di mana mendapatkannya"), t(lang, "Downloaded from GitHub", "Diunduh dari GitHub"), "Mac App Store"],
+    ["Sandbox", t(lang, "Off", "Mati"), t(lang, "On, and enforced", "Nyala, dan ditegakkan")],
+    ["Hardened Runtime", t(lang, "Required", "Wajib"), t(lang, "Apple handles it", "Apple yang mengurus")],
+    [t(lang, "Signed with", "Ditandatangani dengan"), "Developer ID", "Apple Distribution"],
+    ["Notarization", t(lang, "You send it in", "Kamu yang mengirimnya"), t(lang, "Apple does it", "Apple yang melakukannya")],
+    [t(lang, "What it can read", "Apa yang bisa dibaca"), t(lang, "The whole disk", "Seluruh disk"), t(lang, "Only folders you pick", "Hanya folder yang kamu pilih")],
+    [t(lang, "Things it can clean", "Hal yang bisa dibersihkan"), "24", "16"],
+    [t(lang, "Stubborn files", "File bandel"), t(lang, "Can ask for your password", "Bisa meminta password kamu"), t(lang, "Trash only", "Hanya Trash")],
+    [t(lang, "Widget + Finder menu", "Widget + menu Finder"), t(lang, "Included", "Ikut disertakan"), t(lang, "Not included", "Tidak disertakan")],
+    [t(lang, "Updates", "Update"), t(lang, "Updates itself", "Update sendiri"), t(lang, "Through the App Store", "Lewat App Store")],
+    [t(lang, "Time to ship a fix", "Waktu merilis perbaikan"), t(lang, "Minutes", "Menit"), t(lang, "Days, if review agrees", "Berhari-hari, kalau review setuju")],
+    [t(lang, "Apple's cut", "Potongan Apple"), "0%", "15–30%"],
+    [t(lang, "Who it is for", "Untuk siapa"), t(lang, "Developers", "Developer"), t(lang, "Everyone else", "Semua orang lain")],
   ];
 
   return (
@@ -80,8 +83,8 @@ export default function ComparisonSlide() {
         transition={{ delay: 0.8 }}
         className="mt-4 text-[#94A3B8] text-xs leading-relaxed"
       >
-        <span className="text-[#F1F5F9] font-semibold">{"Why keep both? "}</span>
-        {"The DMG is the full product, for the people it was built for. The App Store version is smaller and safer, and it reaches everyone who would never download an app from GitHub in the first place. Keeping both costs one extra target — not a second codebase."}
+        <span className="text-[#F1F5F9] font-semibold">{t(lang, "Why keep both? ", "Kenapa mempertahankan keduanya? ")}</span>
+        {t(lang, "The DMG is the full product, for the people it was built for. The App Store version is smaller and safer, and it reaches everyone who would never download an app from GitHub in the first place. Keeping both costs one extra target — not a second codebase.", "DMG adalah produk utuhnya, untuk orang-orang yang memang jadi tujuannya dibangun. Versi App Store lebih kecil dan lebih aman, dan menjangkau semua orang yang memang tidak akan pernah mengunduh app dari GitHub. Mempertahankan keduanya cuma butuh satu target tambahan — bukan codebase kedua.")}
       </motion.p>
     </div>
   );

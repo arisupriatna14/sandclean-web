@@ -2,39 +2,42 @@
 
 import { motion } from "framer-motion";
 import { Box, ShieldHalf, Fingerprint } from "lucide-react";
+import { useLang } from "../LangContext";
+import { t } from "../translations";
 
 export default function ThreeMechanismsSlide() {
+  const lang = useLang();
 
   const mechanisms = [
     {
       icon: Box,
       accent: "#3B82F6",
       name: "App Sandbox",
-      subtitle: "The wall around the app",
-      enforcer: "macOS itself, at the deepest level",
-      protects: "The rest of your Mac from the app — it can only touch its own folder",
-      requiredFor: "Mac App Store — no exceptions",
-      optIn: "An entitlement you add yourself",
+      subtitle: t(lang, "The wall around the app", "Dinding di sekeliling app"),
+      enforcer: t(lang, "macOS itself, at the deepest level", "macOS sendiri, di level paling dalam"),
+      protects: t(lang, "The rest of your Mac from the app — it can only touch its own folder", "Sisa isi Mac kamu dari app itu — ia hanya bisa menyentuh foldernya sendiri"),
+      requiredFor: t(lang, "Mac App Store — no exceptions", "Mac App Store — tanpa pengecualian"),
+      optIn: t(lang, "An entitlement you add yourself", "Entitlement yang kamu tambahkan sendiri"),
     },
     {
       icon: ShieldHalf,
       accent: "#F97316",
       name: "Hardened Runtime",
-      subtitle: "The lock on the app itself",
-      enforcer: "macOS, as the app is loading",
-      protects: "The app from other programs slipping their own code into it while it runs",
-      requiredFor: "Notarization — no exceptions",
-      optIn: "One build setting",
+      subtitle: t(lang, "The lock on the app itself", "Gembok pada app-nya sendiri"),
+      enforcer: t(lang, "macOS, as the app is loading", "macOS, saat app sedang dimuat"),
+      protects: t(lang, "The app from other programs slipping their own code into it while it runs", "App itu dari program lain yang menyelipkan kodenya sendiri saat app sedang berjalan"),
+      requiredFor: t(lang, "Notarization — no exceptions", "Notarisasi — tanpa pengecualian"),
+      optIn: t(lang, "One build setting", "Satu build setting"),
     },
     {
       icon: Fingerprint,
       accent: "#10B981",
       name: "TCC",
-      subtitle: "Transparency, Consent & Control — the “App wants to access your Photos” prompts, and the Privacy & Security list in Settings",
-      enforcer: "A record of what you have agreed to",
-      protects: "Your private data — Photos, Contacts, Camera — from every app",
-      requiredFor: "Nothing — it only ever says no",
-      optIn: "You cannot. Only the user can grant it.",
+      subtitle: t(lang, "Transparency, Consent & Control — the “App wants to access your Photos” prompts, and the Privacy & Security list in Settings", "Transparency, Consent & Control — prompt “App ingin mengakses Photos kamu”, dan daftar Privacy & Security di Settings"),
+      enforcer: t(lang, "A record of what you have agreed to", "Catatan tentang apa saja yang kamu setujui"),
+      protects: t(lang, "Your private data — Photos, Contacts, Camera — from every app", "Data pribadi kamu — Photos, Contacts, Camera — dari semua app"),
+      requiredFor: t(lang, "Nothing — it only ever says no", "Tidak untuk apa pun — ia hanya bisa bilang tidak"),
+      optIn: t(lang, "You cannot. Only the user can grant it.", "Tidak bisa. Hanya user yang bisa memberikannya."),
     },
   ];
 
@@ -48,7 +51,7 @@ export default function ThreeMechanismsSlide() {
           {"Sandbox ≠ Hardened Runtime ≠ TCC"}
         </h2>
         <p className="mt-3 text-[#94A3B8] text-sm max-w-3xl">
-          {"Three separate protections that get mixed up constantly. Turning one on says nothing about the other two."}
+          {t(lang, "Three separate protections that get mixed up constantly. Turning one on says nothing about the other two.", "Tiga perlindungan terpisah yang terus-menerus tertukar. Menyalakan yang satu tidak berarti apa-apa untuk dua lainnya.")}
         </p>
       </motion.div>
 
@@ -77,10 +80,10 @@ export default function ThreeMechanismsSlide() {
 
               <dl className="flex flex-col gap-2.5">
                 {[
-                  ["Who enforces it", m.enforcer],
-                  ["What it protects", m.protects],
-                  ["Required for", m.requiredFor],
-                  ["How you get it", m.optIn],
+                  [t(lang, "Who enforces it", "Siapa yang menegakkan"), m.enforcer],
+                  [t(lang, "What it protects", "Apa yang dilindungi"), m.protects],
+                  [t(lang, "Required for", "Wajib untuk"), m.requiredFor],
+                  [t(lang, "How you get it", "Cara mendapatkannya"), m.optIn],
                 ].map(([k, v]) => (
                   <div key={k}>
                     <dt className="text-[#64748B] text-[10px] font-semibold uppercase tracking-wider">{k}</dt>
@@ -101,20 +104,20 @@ export default function ThreeMechanismsSlide() {
       >
         <div className="p-3.5 rounded-xl border border-[#1E3A5F] bg-[#0F1F3D]">
           <p className="text-[#F1F5F9] text-xs font-semibold mb-1">
-            {"DMG build"}
+            {t(lang, "DMG build", "Build DMG")}
           </p>
           <p className="text-[#94A3B8] text-xs leading-relaxed">
             <span className="text-[#F97316] font-mono">ENABLE_HARDENED_RUNTIME: YES</span> —{" "}
-            {"locked against tampering, but free to read your disk. Not sandboxed at all."}
+            {t(lang, "locked against tampering, but free to read your disk. Not sandboxed at all.", "terkunci dari gangguan luar, tapi bebas membaca disk kamu. Sama sekali tidak sandboxed.")}
           </p>
         </div>
         <div className="p-3.5 rounded-xl border border-[#1E3A5F] bg-[#0F1F3D]">
           <p className="text-[#F1F5F9] text-xs font-semibold mb-1">
-            {"App Store build"}
+            {t(lang, "App Store build", "Build App Store")}
           </p>
           <p className="text-[#94A3B8] text-xs leading-relaxed">
             <span className="text-[#F97316] font-mono">ENABLE_HARDENED_RUNTIME: NO</span> —{" "}
-            {"sandboxed instead, and Apple handles the tamper-proofing on their side."}
+            {t(lang, "sandboxed instead, and Apple handles the tamper-proofing on their side.", "justru sandboxed, dan Apple yang mengurus perlindungannya di sisi mereka.")}
           </p>
         </div>
       </motion.div>

@@ -2,25 +2,28 @@
 
 import { motion } from "framer-motion";
 import { Ban, Check, X, ShieldQuestion } from "lucide-react";
+import { useLang } from "../LangContext";
+import { t } from "../translations";
 
 export default function SandboxSlide() {
+  const lang = useLang();
 
   const blocked = [
     {
-      label: "Run other programs",
-      detail: "no docker, brew, simctl, launchctl",
+      label: t(lang, "Run other programs", "Menjalankan program lain"),
+      detail: t(lang, "no docker, brew, simctl, launchctl", "tidak ada docker, brew, simctl, launchctl"),
     },
     {
-      label: "Open your real folders",
-      detail: "unless you picked them yourself",
+      label: t(lang, "Open your real folders", "Membuka folder kamu yang asli"),
+      detail: t(lang, "unless you picked them yourself", "kecuali kamu sendiri yang memilihnya"),
     },
     {
-      label: "Read what other apps saved",
-      detail: "Mail, Photos, browser data",
+      label: t(lang, "Read what other apps saved", "Membaca simpanan app lain"),
+      detail: t(lang, "Mail, Photos, browser data", "Mail, Photos, data browser"),
     },
     {
-      label: "Ask for your password",
-      detail: "no admin rights, ever",
+      label: t(lang, "Ask for your password", "Meminta password kamu"),
+      detail: t(lang, "no admin rights, ever", "tidak ada hak admin, sama sekali"),
     },
   ];
 
@@ -34,7 +37,7 @@ export default function SandboxSlide() {
           {"The app gets one folder. That's all."}
         </h2>
         <p className="mt-3 text-[#94A3B8] text-lg leading-relaxed max-w-3xl">
-          {"macOS locks the app inside a single folder and lets it believe that folder is the whole Mac. Every App Store app runs this way. Apps you download yourself do not."}
+          {t(lang, "macOS locks the app inside a single folder and lets it believe that folder is the whole Mac. Every App Store app runs this way. Apps you download yourself do not.", "macOS mengunci app di dalam satu folder dan membiarkannya percaya folder itulah seluruh Mac. Semua app App Store berjalan begini. App yang kamu unduh sendiri tidak.")}
         </p>
       </motion.div>
 
@@ -46,7 +49,7 @@ export default function SandboxSlide() {
           className="p-5 rounded-2xl border border-[#1E3A5F] bg-[#0F1F3D]"
         >
           <p className="text-[#F1F5F9] font-semibold text-sm mb-4">
-            {"Same line of code, two results"}
+            {t(lang, "Same line of code, two results", "Baris kode yang sama, dua hasil")}
           </p>
 
           <div className="flex flex-col gap-3">
@@ -54,12 +57,12 @@ export default function SandboxSlide() {
               <div className="flex items-center gap-1.5 mb-1.5">
                 <Check className="w-3.5 h-3.5 text-[#10B981] flex-shrink-0" strokeWidth={2.5} />
                 <p className="text-[#10B981] text-xs font-semibold">
-                  {"Not sandboxed — the DMG version"}
+                  {t(lang, "Not sandboxed — the DMG version", "Tidak sandboxed — versi DMG")}
                 </p>
               </div>
               <code className="block text-sm font-mono text-[#94A3B8]">open ~/Documents</code>
               <p className="text-[#64748B] text-xs mt-1.5 leading-relaxed">
-                {"→ your real Documents, with all your files in it."}
+                {t(lang, "→ your real Documents, with all your files in it.", "→ Documents kamu yang asli, lengkap dengan semua file di dalamnya.")}
               </p>
             </div>
 
@@ -67,12 +70,12 @@ export default function SandboxSlide() {
               <div className="flex items-center gap-1.5 mb-1.5">
                 <X className="w-3.5 h-3.5 text-[#F97316] flex-shrink-0" strokeWidth={2.5} />
                 <p className="text-[#F97316] text-xs font-semibold">
-                  {"Sandboxed — the App Store version"}
+                  {t(lang, "Sandboxed — the App Store version", "Sandboxed — versi App Store")}
                 </p>
               </div>
               <code className="block text-sm font-mono text-[#94A3B8]">open ~/Documents</code>
               <p className="text-[#64748B] text-xs mt-1.5 leading-relaxed">
-                {"→ an empty folder that belongs to the app alone, tucked away in here:"}
+                {t(lang, "→ an empty folder that belongs to the app alone, tucked away in here:", "→ folder kosong milik app itu sendiri, tersembunyi di sini:")}
               </p>
               <code className="block text-sm font-mono text-[#3B82F6] mt-2 leading-relaxed break-all">
                 ~/Library/Containers/
@@ -92,11 +95,11 @@ export default function SandboxSlide() {
           <div className="flex items-center gap-2 mb-1">
             <Ban className="w-4 h-4 text-[#EF4444]" strokeWidth={1.8} />
             <p className="text-[#F1F5F9] font-semibold text-sm">
-              {"Things it can never do"}
+              {t(lang, "Things it can never do", "Yang tidak akan pernah bisa dilakukan")}
             </p>
           </div>
           <p className="text-[#64748B] text-xs mb-4 leading-relaxed">
-            {"Not “ask and be refused” — the request never leaves the app."}
+            {t(lang, "Not “ask and be refused” — the request never leaves the app.", "Bukan “minta lalu ditolak” — permintaannya bahkan tidak pernah keluar dari app.")}
           </p>
 
           <div className="flex flex-col gap-2.5">
@@ -120,8 +123,8 @@ export default function SandboxSlide() {
           <div className="flex items-start gap-2.5 mt-4 pt-3 border-t border-[#EF4444]/20">
             <ShieldQuestion className="w-3.5 h-3.5 text-[#EF4444] flex-shrink-0 mt-0.5" strokeWidth={2} />
             <p className="text-[#94A3B8] text-xs leading-relaxed">
-              <span className="text-[#F1F5F9] font-semibold">{"Why Apple does this: "}</span>
-              {"a malicious app — or an honest one with a bug — cannot reach anything it was not explicitly handed."}
+              <span className="text-[#F1F5F9] font-semibold">{t(lang, "Why Apple does this: ", "Kenapa Apple begini: ")}</span>
+              {t(lang, "a malicious app — or an honest one with a bug — cannot reach anything it was not explicitly handed.", "app jahat — atau app jujur yang punya bug — tidak bisa menjangkau apa pun yang tidak diserahkan secara eksplisit kepadanya.")}
             </p>
           </div>
         </motion.div>
@@ -133,8 +136,8 @@ export default function SandboxSlide() {
         transition={{ delay: 0.7 }}
         className="mt-4 text-[#94A3B8] text-xs leading-relaxed"
       >
-        <span className="text-[#F1F5F9] font-semibold">{"The catch for a cleaner: "}</span>
-        {"SandClean's whole job is looking at folders it did not create and running the tools that made the mess. Inside the sandbox it can do neither — unless you hand it the folder yourself."}
+        <span className="text-[#F1F5F9] font-semibold">{t(lang, "The catch for a cleaner: ", "Masalahnya untuk sebuah cleaner: ")}</span>
+        {t(lang, "SandClean's whole job is looking at folders it did not create and running the tools that made the mess. Inside the sandbox it can do neither — unless you hand it the folder yourself.", "Seluruh pekerjaan SandClean adalah melihat folder yang bukan buatannya dan menjalankan tool yang membuat berantakan. Di dalam sandbox ia tidak bisa keduanya — kecuali kamu sendiri yang menyerahkan foldernya.")}
       </motion.p>
     </div>
   );

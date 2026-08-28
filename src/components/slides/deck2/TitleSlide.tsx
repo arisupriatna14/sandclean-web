@@ -2,8 +2,11 @@
 
 import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
+import { useLang } from "../LangContext";
+import { t } from "../translations";
 
 export default function TitleSlide() {
+  const lang = useLang();
   return (
     <div className="flex flex-col items-center justify-center h-full text-center px-8 select-none">
       <motion.div
@@ -59,7 +62,7 @@ export default function TitleSlide() {
         transition={{ duration: 0.5, delay: 0.55 }}
         className="mt-8 text-xs font-mono text-[#334155] hover:text-[#3B82F6] transition-colors"
       >
-        ← {"Part 1 — Building SandClean"}
+        ← {t(lang, "Part 1 — Building SandClean", "Bagian 1 — Membangun SandClean")}
       </motion.a>
 
       <div className="absolute inset-0 pointer-events-none overflow-hidden">

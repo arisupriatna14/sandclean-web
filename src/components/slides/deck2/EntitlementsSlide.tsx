@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { Puzzle } from "lucide-react";
 import CodeBlock from "../CodeBlock";
+import { useLang } from "../LangContext";
+import { t } from "../translations";
 
 const DMG = `<dict>
   <key>com.apple.security.application-groups</key>
@@ -29,6 +31,7 @@ const APPSTORE = `<dict>
 </dict>`;
 
 export default function EntitlementsSlide() {
+  const lang = useLang();
 
   return (
     <div className="flex flex-col justify-center h-full px-8 sm:px-16 max-w-5xl mx-auto w-full">
@@ -40,7 +43,7 @@ export default function EntitlementsSlide() {
           {"The whole difference, in XML."}
         </h2>
         <p className="mt-3 text-[#94A3B8] text-sm">
-          {"This file is the app's declared list of permissions. Everything the app is allowed to do has to be written down here before it is built."}
+          {t(lang, "This file is the app's declared list of permissions. Everything the app is allowed to do has to be written down here before it is built.", "File ini adalah daftar izin yang dideklarasikan app. Semua yang boleh dilakukan app harus ditulis di sini sebelum app-nya dibangun.")}
         </p>
       </motion.div>
 
@@ -53,7 +56,7 @@ export default function EntitlementsSlide() {
           </div>
           <CodeBlock code={DMG} accent="#3B82F6" />
           <p className="mt-2 text-[#64748B] text-xs leading-relaxed">
-            {"There is no app-sandbox line here at all. Nothing switched it on, so the app can go anywhere you can go."}
+            {t(lang, "There is no app-sandbox line here at all. Nothing switched it on, so the app can go anywhere you can go.", "Tidak ada baris app-sandbox di sini sama sekali. Tidak ada yang menyalakannya, jadi app bisa ke mana pun kamu bisa.")}
           </p>
         </motion.div>
 
@@ -65,7 +68,7 @@ export default function EntitlementsSlide() {
           </div>
           <CodeBlock code={APPSTORE} accent="#8B5CF6" highlight={[2, 3, 6, 7]} />
           <p className="mt-2 text-[#64748B] text-xs leading-relaxed">
-            {"Sandbox on, and only two file permissions: whatever the user personally chose, plus the right to remember that choice. Nothing that opens the disk in general."}
+            {t(lang, "Sandbox on, and only two file permissions: whatever the user personally chose, plus the right to remember that choice. Nothing that opens the disk in general.", "Sandbox menyala, dan hanya dua izin file: apa pun yang dipilih sendiri oleh user, plus hak untuk mengingat pilihan itu. Tidak ada yang membuka disk secara umum.")}
           </p>
         </motion.div>
       </div>
@@ -78,8 +81,8 @@ export default function EntitlementsSlide() {
       >
         <Puzzle className="w-4 h-4 text-[#94A3B8] flex-shrink-0 mt-0.5" strokeWidth={1.8} />
         <p className="text-[#94A3B8] text-xs leading-relaxed">
-          <span className="text-[#F1F5F9] font-semibold">{"Extensions get no vote: "}</span>
-          {"the Widget and the Finder Extension are sandboxed even in the DMG version. Small add-ons like these are always sandboxed, whether you want it or not — which is why they cannot simply read the main app's files, and have to share data through a folder both sides are explicitly allowed into."}
+          <span className="text-[#F1F5F9] font-semibold">{t(lang, "Extensions get no vote: ", "Extension tidak punya pilihan: ")}</span>
+          {t(lang, "the Widget and the Finder Extension are sandboxed even in the DMG version. Small add-ons like these are always sandboxed, whether you want it or not — which is why they cannot simply read the main app's files, and have to share data through a folder both sides are explicitly allowed into.", "Widget dan Finder Extension tetap sandboxed bahkan di versi DMG. Add-on kecil seperti ini selalu sandboxed, mau atau tidak — itulah kenapa keduanya tidak bisa begitu saja membaca file app utama, dan harus berbagi data lewat satu folder yang kedua sisinya memang diizinkan masuk.")}
         </p>
       </motion.div>
     </div>

@@ -2,13 +2,16 @@
 
 import { motion } from "framer-motion";
 import { Wind, GitBranch, Globe } from "lucide-react";
+import { useLang } from "../LangContext";
+import { t } from "../translations";
 
 export default function ClosingSlide() {
+  const lang = useLang();
 
   const takeaways = [
-    "Where an app lives decides what it may do",
-    "Two versions, one source",
-    "Automate the release on day one",
+    t(lang, "Where an app lives decides what it may do", "Di mana app hidup menentukan apa yang boleh dilakukannya"),
+    t(lang, "Two versions, one source", "Dua versi, satu source"),
+    t(lang, "Automate the release on day one", "Otomatiskan rilis sejak hari pertama"),
   ];
 
   return (
@@ -37,7 +40,7 @@ export default function ClosingSlide() {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="mt-5 text-lg text-[#94A3B8] max-w-xl leading-relaxed"
       >
-        {"SandClean is free and open-source. Take the Makefile, take the two-target setup — both are more useful copied than admired."}
+        {t(lang, "SandClean is free and open-source. Take the Makefile, take the two-target setup — both are more useful copied than admired.", "SandClean gratis dan open-source. Ambil Makefile-nya, ambil setup dua target-nya — keduanya lebih berguna disalin daripada dikagumi.")}
       </motion.p>
 
       <motion.div
@@ -85,7 +88,7 @@ export default function ClosingSlide() {
         transition={{ delay: 0.65 }}
         className="mt-10 text-[#64748B] text-sm"
       >
-        {"Questions?"}
+        {t(lang, "Questions?", "Ada pertanyaan?")}
       </motion.p>
 
       <motion.div

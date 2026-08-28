@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { GitBranch, AlertTriangle } from "lucide-react";
 import CodeBlock from "../CodeBlock";
+import { useLang } from "../LangContext";
+import { t } from "../translations";
 
 const YAML = `SandCleanAppStore:
   type: application
@@ -25,6 +27,7 @@ brew install xcodegen
 xcodegen generate`;
 
 export default function OneSourceSlide() {
+  const lang = useLang();
 
   return (
     <div className="flex flex-col justify-center h-full px-8 sm:px-16 max-w-5xl mx-auto w-full">
@@ -36,7 +39,7 @@ export default function OneSourceSlide() {
           {"project.yml is the truth."}
         </h2>
         <p className="mt-3 text-[#94A3B8] text-sm">
-          {"Xcode normally keeps its own project file, and it is a nightmare to share. Here it is thrown away and rebuilt from one readable text file instead. Both Mac apps are described in it — same code, different settings."}
+          {t(lang, "Xcode normally keeps its own project file, and it is a nightmare to share. Here it is thrown away and rebuilt from one readable text file instead. Both Mac apps are described in it — same code, different settings.", "Xcode biasanya menyimpan file project-nya sendiri, dan file itu menyusahkan untuk dibagi. Di sini file itu dibuang dan dibangun ulang dari satu file teks yang bisa dibaca manusia. Kedua app Mac dijelaskan di situ — kode sama, setting berbeda.")}
         </p>
       </motion.div>
 
@@ -60,11 +63,11 @@ export default function OneSourceSlide() {
             <div className="flex items-center gap-2 mb-2">
               <AlertTriangle className="w-3.5 h-3.5 text-[#F59E0B]" strokeWidth={2} />
               <p className="text-[#F1F5F9] font-semibold text-xs">
-                {"Why the separate build dir"}
+                {t(lang, "Why the separate build dir", "Kenapa build dir dipisah")}
               </p>
             </div>
             <p className="text-[#94A3B8] text-xs leading-relaxed">
-              {"Both targets produce a file called SandClean.app. Give them the same output folder and building one quietly overwrites the other — you end up testing the wrong app and never notice."}
+              {t(lang, "Both targets produce a file called SandClean.app. Give them the same output folder and building one quietly overwrites the other — you end up testing the wrong app and never notice.", "Kedua target menghasilkan file bernama SandClean.app. Kalau folder outputnya sama, build yang satu diam-diam menimpa yang lain — kamu berakhir menguji app yang salah tanpa sadar.")}
             </p>
           </motion.div>
 
@@ -86,10 +89,10 @@ export default function OneSourceSlide() {
       >
         <GitBranch className="w-4 h-4 text-[#94A3B8] flex-shrink-0 mt-0.5" strokeWidth={1.8} />
         <p className="text-[#94A3B8] text-xs leading-relaxed">
-          <span className="text-[#F1F5F9] font-semibold">{"One flag drives everything: "}</span>
-          {"APPSTORE is switched on for one target only. Every difference between the two apps in the rest of this deck is really just a line saying"}{" "}
+          <span className="text-[#F1F5F9] font-semibold">{t(lang, "One flag drives everything: ", "Satu flag menggerakkan semuanya: ")}</span>
+          {t(lang, "APPSTORE is switched on for one target only. Every difference between the two apps in the rest of this deck is really just a line saying", "APPSTORE hanya dinyalakan di satu target. Setiap perbedaan antara kedua app di sisa deck ini sebenarnya cuma satu baris yang berbunyi")}{" "}
           <code className="text-[#F97316] font-mono">#if APPSTORE</code>{" "}
-          {"— build this bit only for the App Store version."}
+          {t(lang, "— build this bit only for the App Store version.", "— bangun bagian ini hanya untuk versi App Store.")}
         </p>
       </motion.div>
     </div>

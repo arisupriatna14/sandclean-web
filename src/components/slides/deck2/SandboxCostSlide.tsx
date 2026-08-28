@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { Terminal, Lock, Minus } from "lucide-react";
 import CodeBlock from "../CodeBlock";
+import { useLang } from "../LangContext";
+import { t } from "../translations";
 
 const CODE = `private static let cliDependentCategories: Set<ScanCategory> =
     [.docker, .homebrewCleaner, .simulatorManager, .startupManager,
@@ -21,25 +23,26 @@ var isAvailableInThisBuild: Bool {
 }`;
 
 export default function SandboxCostSlide() {
+  const lang = useLang();
 
   const cli = ["Docker Cleanup", "Homebrew Deep Clean", "Simulator Manager", "Startup Items", "Storage Timeline", "Language Pack"];
 
   const blocked = [
     {
       name: "Mail Attachments",
-      why: "your mail stays off-limits even after you grant the Home folder",
+      why: t(lang, "your mail stays off-limits even after you grant the Home folder", "email kamu tetap tidak bisa disentuh walau folder Home sudah diizinkan"),
     },
     {
       name: "Applications",
-      why: "it can see your apps but not remove them — and removing them is the entire point",
+      why: t(lang, "it can see your apps but not remove them — and removing them is the entire point", "bisa melihat app kamu tapi tidak bisa menghapusnya — padahal menghapus itu seluruh gunanya"),
     },
   ];
 
   const others = [
-    { label: "Updates", dmg: "updates itself", as: "waits for the App Store" },
-    { label: "Stubborn files", dmg: "can ask for your password", as: "just moves them to Trash" },
-    { label: "AI Analysis", dmg: "uses Claude CLI", as: "needs your own API key" },
-    { label: "Extras", dmg: "Widget + Finder menu", as: "neither is included" },
+    { label: t(lang, "Updates", "Update"), dmg: t(lang, "updates itself", "update sendiri"), as: t(lang, "waits for the App Store", "menunggu App Store") },
+    { label: t(lang, "Stubborn files", "File bandel"), dmg: t(lang, "can ask for your password", "bisa meminta password kamu"), as: t(lang, "just moves them to Trash", "cuma memindahkannya ke Trash") },
+    { label: "AI Analysis", dmg: t(lang, "uses Claude CLI", "memakai Claude CLI"), as: t(lang, "needs your own API key", "butuh API key kamu sendiri") },
+    { label: t(lang, "Extras", "Ekstra"), dmg: t(lang, "Widget + Finder menu", "Widget + menu Finder"), as: t(lang, "neither is included", "keduanya tidak ikut") },
   ];
 
   return (
@@ -73,7 +76,7 @@ export default function SandboxCostSlide() {
             <div className="flex items-center gap-2 mb-2.5">
               <Terminal className="w-3.5 h-3.5 text-[#F97316]" strokeWidth={2} />
               <p className="text-[#F1F5F9] text-xs font-semibold">
-                {"6 — work by running other tools, which the sandbox forbids"}
+                {t(lang, "6 — work by running other tools, which the sandbox forbids", "6 — bekerja dengan menjalankan tool lain, yang dilarang sandbox")}
               </p>
             </div>
             <div className="flex flex-wrap gap-1.5">
@@ -94,7 +97,7 @@ export default function SandboxCostSlide() {
             <div className="flex items-center gap-2 mb-2.5">
               <Lock className="w-3.5 h-3.5 text-[#EF4444]" strokeWidth={2} />
               <p className="text-[#F1F5F9] text-xs font-semibold">
-                {"2 — blocked even after the user grants their Home folder"}
+                {t(lang, "2 — blocked even after the user grants their Home folder", "2 — tetap diblokir walau user sudah mengizinkan folder Home")}
               </p>
             </div>
             <div className="flex flex-col gap-1.5">
@@ -115,7 +118,7 @@ export default function SandboxCostSlide() {
             <div className="flex items-center gap-2 mb-2.5">
               <Minus className="w-3.5 h-3.5 text-[#8B5CF6]" strokeWidth={2} />
               <p className="text-[#F1F5F9] text-xs font-semibold">
-                {"And the things that quietly get worse"}
+                {t(lang, "And the things that quietly get worse", "Dan hal-hal yang diam-diam jadi lebih terbatas")}
               </p>
             </div>
             <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">

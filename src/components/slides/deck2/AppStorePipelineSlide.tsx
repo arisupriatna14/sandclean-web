@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { UploadCloud, FileDiff, Clock } from "lucide-react";
 import CodeBlock from "../CodeBlock";
+import { useLang } from "../LangContext";
+import { t } from "../translations";
 
 const EXPORT = `<!-- scripts/ExportOptions-AppStore.plist -->
 <key>method</key>
@@ -26,19 +28,20 @@ const DIFF = `  <key>CFBundleDisplayName</key>          <!-- + -->
   <string>com.arisupriatna.SandCleanAS</string>`;
 
 export default function AppStorePipelineSlide() {
+  const lang = useLang();
 
   const notes = [
     {
       icon: UploadCloud,
       accent: "#8B5CF6",
-      title: "One step less",
-      body: "No DMG to build, nothing to send for scanning, nothing to staple. The build goes straight to Apple, and they handle the signing and the malware check themselves.",
+      title: t(lang, "One step less", "Satu langkah lebih sedikit"),
+      body: t(lang, "No DMG to build, nothing to send for scanning, nothing to staple. The build goes straight to Apple, and they handle the signing and the malware check themselves.", "Tidak ada DMG untuk dibangun, tidak ada yang dikirim untuk dipindai, tidak ada yang perlu di-staple. Build-nya langsung ke Apple, dan mereka sendiri yang mengurus penandatanganan dan pemeriksaan malware-nya."),
     },
     {
       icon: Clock,
       accent: "#F59E0B",
-      title: "And one step much longer",
-      body: "The upload takes minutes. The review does not. A DMG release is live the moment you publish it; an App Store release waits for a real person to look at it, and one rejection sends you back to the beginning.",
+      title: t(lang, "And one step much longer", "Dan satu langkah jauh lebih lama"),
+      body: t(lang, "The upload takes minutes. The review does not. A DMG release is live the moment you publish it; an App Store release waits for a real person to look at it, and one rejection sends you back to the beginning.", "Unggahannya makan waktu beberapa menit. Review-nya tidak. Rilis DMG langsung live begitu kamu mempublikasikannya; rilis App Store menunggu orang sungguhan meninjaunya, dan satu penolakan mengembalikanmu ke awal."),
     },
   ];
 
@@ -90,7 +93,7 @@ export default function AppStorePipelineSlide() {
           </div>
           <CodeBlock code={DIFF} accent="#10B981" highlight={[7, 8, 9]} />
           <p className="mt-2 text-[#64748B] text-xs leading-relaxed">
-            {"Every app carries a small settings file describing itself to macOS. Here there are two of them, one per version — the App Store one adds the category and a declaration about encryption, and drops everything to do with self-updating, because that version is not allowed to update itself."}
+            {t(lang, "Every app carries a small settings file describing itself to macOS. Here there are two of them, one per version — the App Store one adds the category and a declaration about encryption, and drops everything to do with self-updating, because that version is not allowed to update itself.", "Setiap app membawa file setting kecil yang menjelaskan dirinya ke macOS. Di sini ada dua, satu untuk tiap versi — versi App Store menambahkan kategori dan pernyataan soal enkripsi, lalu membuang semua yang berkaitan dengan update mandiri, karena versi itu memang tidak boleh meng-update dirinya sendiri.")}
           </p>
         </motion.div>
       </div>
